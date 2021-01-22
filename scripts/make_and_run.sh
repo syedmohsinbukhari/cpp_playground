@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd bin
+cd build
 make -j4
 cd ..
-bin/src/$1
+build/src/$1

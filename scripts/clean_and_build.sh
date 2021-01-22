@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd bin
+cd build
 rm -rf ./*
 cmake ..
 make -j4
