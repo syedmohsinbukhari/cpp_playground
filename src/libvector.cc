@@ -2,16 +2,16 @@
 #include<memory>
 
 
-class IntVector {
+class Vector {
 public:
-    IntVector();
-    IntVector(const IntVector& inpVector);
-    IntVector(IntVector&& inpVector) noexcept;
-    ~IntVector();
+    Vector();
+    Vector(const Vector& inpVector);
+    Vector(Vector&& inpVector) noexcept;
+    ~Vector();
     int getSize() const;
     uint8_t getElement(int index) const;
     void appendInt(const uint8_t& x);
-    void concatenate(const IntVector& inpVector);
+    void concatenate(const Vector& inpVector);
     uint8_t * getVectorData() const;
     void emptyVectorData();
     void nullifyVectorData();
@@ -23,13 +23,13 @@ private:
     int count;
 };
 
-IntVector::IntVector() {
+Vector::Vector() {
     std::cout << "Raw constructor" << std::endl;
     this->vectorData = nullptr;
     this->count = 0;
 }
 
-IntVector::IntVector(const IntVector& inpVector) {
+Vector::Vector(const Vector& inpVector) {
     std::cout << "Copy constructor" << std::endl;
 
     this->count = inpVector.getSize();
@@ -41,7 +41,7 @@ IntVector::IntVector(const IntVector& inpVector) {
     }
 }
 
-IntVector::IntVector(IntVector&& inpVector) noexcept {
+Vector::Vector(Vector&& inpVector) noexcept {
     std::cout << "Move constructor" << std::endl;
 
     this->count = inpVector.getSize();
@@ -51,20 +51,20 @@ IntVector::IntVector(IntVector&& inpVector) noexcept {
     inpVector.nullifyVectorData();
 }
 
-IntVector::~IntVector() {
+Vector::~Vector() {
     std::cout << "Destroying" << std::endl;
     delete [] this->vectorData;
 }
 
-int IntVector::getSize() const {
+int Vector::getSize() const {
     return this->count;
 }
 
-uint8_t IntVector::getElement(int index) const {
+uint8_t Vector::getElement(int index) const {
     return this->vectorData[index];
 }
 
-void IntVector::appendInt(const uint8_t& x) {
+void Vector::appendInt(const uint8_t& x) {
     std::cout << "Copying to vector: " << (int)x << std::endl;
     uint8_t * curVectorData = this->vectorData;
     this->vectorData = new uint8_t[this->count + 1];
@@ -80,17 +80,17 @@ void IntVector::appendInt(const uint8_t& x) {
     this->count += 1;
 }
 
-void IntVector::concatenate(const IntVector& inpVector) {
+void Vector::concatenate(const Vector& inpVector) {
     for (int i=0; i < inpVector.getSize(); i++) {
         this->appendInt(inpVector.getElement(i));
     }
 }
 
-uint8_t * IntVector::getVectorData() const {
+uint8_t * Vector::getVectorData() const {
     return this->vectorData;
 }
 
-void IntVector::emptyVectorData() {
+void Vector::emptyVectorData() {
     std::cout << "Emptying Vector Data" << std::endl;
 
     delete [] this->vectorData;
@@ -98,14 +98,14 @@ void IntVector::emptyVectorData() {
     this->count = 0;
 }
 
-void IntVector::nullifyVectorData() {
+void Vector::nullifyVectorData() {
     std::cout << "Nullifying Vector Data" << std::endl;
 
     this->vectorData = nullptr;
     this->count = 0;
 }
 
-void IntVector::Print() const {
+void Vector::Print() const {
     std::cout << "Print Vector {";
     for (int i=0; i < this->count; i++) {
         std::cout << unsigned(this->vectorData[i]);
@@ -116,6 +116,6 @@ void IntVector::Print() const {
     std::cout << "}" << std::endl;
 }
 
-void IntVector::PrintSize() const {
+void Vector::PrintSize() const {
     std::cout << "Size of vector: " << this->count << std::endl;
 }
