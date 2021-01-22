@@ -3,6 +3,6 @@
 mkdir -p build
 cd build
 rm -rf ./*
-cmake ..
+cmake $@ ..
 make -j4
 cd ..
