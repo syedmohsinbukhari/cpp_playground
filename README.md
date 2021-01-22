@@ -6,12 +6,16 @@ This repository contains scripts I use to test and learn C++ features and functi
 
 ## How to use
 
+*Hint: Make a `build` directory in the root of this repository. However, BASH scripts will create it automatically.*
+
 ### To clean everything and build from scratch
 
+- `cd <repository-root>`
 - `scripts/clean_and_build.sh`
 
 ### To make all files and run a specific one
 
+- `cd <repository-root>`
 - `scripts/make_and_run.sh <name-of-file-without-extension>`
 
 ## How to add new files
