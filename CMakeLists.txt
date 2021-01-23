@@ -15,6 +15,12 @@ if(NOT CMAKE_BUILD_TYPE)
     )
 endif()
 
+if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    add_definitions( -DDEBUG )
+elseif(${CMAKE_BUILD_TYPE} STREQUAL "Release")
+    add_definitions( -DRELEASE )
+endif()
+
 set(
     CMAKE_RUNTIME_OUTPUT_DIRECTORY
     ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}/${CMAKE_SYSTEM_PROCESSOR}/bin
