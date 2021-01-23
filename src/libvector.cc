@@ -25,14 +25,18 @@ private:
 
 template <typename T>
 Vector<T>::Vector() {
+#if defined(DEBUG)
     std::cout << "Raw constructor" << std::endl;
+#endif
     this->vectorData = nullptr;
     this->count = 0;
 }
 
 template <typename T>
 Vector<T>::Vector(const Vector& inpVector) {
+#if defined(DEBUG)
     std::cout << "Copy constructor" << std::endl;
+#endif
 
     this->count = inpVector.getSize();
 
@@ -45,7 +49,9 @@ Vector<T>::Vector(const Vector& inpVector) {
 
 template <typename T>
 Vector<T>::Vector(Vector&& inpVector) noexcept {
+#if defined(DEBUG)
     std::cout << "Move constructor" << std::endl;
+#endif
 
     this->count = inpVector.getSize();
 
@@ -56,7 +62,9 @@ Vector<T>::Vector(Vector&& inpVector) noexcept {
 
 template <typename T>
 Vector<T>::~Vector() {
+#if defined(DEBUG)
     std::cout << "Destroying" << std::endl;
+#endif
     delete [] this->vectorData;
 }
 
@@ -72,7 +80,9 @@ T Vector<T>::getElement(int index) const {
 
 template <typename T>
 void Vector<T>::append(const T& x) {
+#if defined(DEBUG)
     std::cout << "Appending to vector" << std::endl;
+#endif
     T * curVectorData = this->vectorData;
     this->vectorData = new T[this->count + 1];
 
@@ -101,7 +111,9 @@ T * Vector<T>::getVectorData() const {
 
 template <typename T>
 void Vector<T>::emptyVectorData() {
+#if defined(DEBUG)
     std::cout << "Emptying Vector Data" << std::endl;
+#endif
 
     delete [] this->vectorData;
     this->vectorData = nullptr;
@@ -110,7 +122,9 @@ void Vector<T>::emptyVectorData() {
 
 template <typename T>
 void Vector<T>::nullifyVectorData() {
+#if defined(DEBUG)
     std::cout << "Nullifying Vector Data" << std::endl;
+#endif
 
     this->vectorData = nullptr;
     this->count = 0;
