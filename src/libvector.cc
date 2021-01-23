@@ -1,7 +1,7 @@
 #include<iostream>
-#include<memory>
 
 
+template <typename T>
 class Vector {
 public:
     Vector();
@@ -9,39 +9,42 @@ public:
     Vector(Vector&& inpVector) noexcept;
     ~Vector();
     int getSize() const;
-    uint8_t getElement(int index) const;
-    void appendInt(const uint8_t& x);
+    T getElement(int index) const;
+    void append(const T& x);
     void concatenate(const Vector& inpVector);
-    uint8_t * getVectorData() const;
+    T * getVectorData() const;
     void emptyVectorData();
     void nullifyVectorData();
     void Print() const;
     void PrintSize() const;
 
 private:
-    uint8_t * vectorData;
+    T * vectorData;
     int count;
 };
 
-Vector::Vector() {
+template <typename T>
+Vector<T>::Vector() {
     std::cout << "Raw constructor" << std::endl;
     this->vectorData = nullptr;
     this->count = 0;
 }
 
-Vector::Vector(const Vector& inpVector) {
+template <typename T>
+Vector<T>::Vector(const Vector& inpVector) {
     std::cout << "Copy constructor" << std::endl;
 
     this->count = inpVector.getSize();
 
-    this->vectorData = new uint8_t[this->count];
+    this->vectorData = new T[this->count];
 
     for (int i=0; i < this->count; i++) {
         this->vectorData[i] = inpVector.getElement(i);
     }
 }
 
-Vector::Vector(Vector&& inpVector) noexcept {
+template <typename T>
+Vector<T>::Vector(Vector&& inpVector) noexcept {
     std::cout << "Move constructor" << std::endl;
 
     this->count = inpVector.getSize();
@@ -51,23 +54,27 @@ Vector::Vector(Vector&& inpVector) noexcept {
     inpVector.nullifyVectorData();
 }
 
-Vector::~Vector() {
+template <typename T>
+Vector<T>::~Vector() {
     std::cout << "Destroying" << std::endl;
     delete [] this->vectorData;
 }
 
-int Vector::getSize() const {
+template <typename T>
+int Vector<T>::getSize() const {
     return this->count;
 }
 
-uint8_t Vector::getElement(int index) const {
+template <typename T>
+T Vector<T>::getElement(int index) const {
     return this->vectorData[index];
 }
 
-void Vector::appendInt(const uint8_t& x) {
-    std::cout << "Copying to vector: " << (int)x << std::endl;
-    uint8_t * curVectorData = this->vectorData;
-    this->vectorData = new uint8_t[this->count + 1];
+template <typename T>
+void Vector<T>::append(const T& x) {
+    std::cout << "Appending to vector" << std::endl;
+    T * curVectorData = this->vectorData;
+    this->vectorData = new T[this->count + 1];
 
     for (int i=0; i < this->count; i++) {
         this->vectorData[i] = curVectorData[i];
@@ -80,17 +87,20 @@ void Vector::appendInt(const uint8_t& x) {
     this->count += 1;
 }
 
-void Vector::concatenate(const Vector& inpVector) {
+template <typename T>
+void Vector<T>::concatenate(const Vector& inpVector) {
     for (int i=0; i < inpVector.getSize(); i++) {
         this->appendInt(inpVector.getElement(i));
     }
 }
 
-uint8_t * Vector::getVectorData() const {
+template <typename T>
+T * Vector<T>::getVectorData() const {
     return this->vectorData;
 }
 
-void Vector::emptyVectorData() {
+template <typename T>
+void Vector<T>::emptyVectorData() {
     std::cout << "Emptying Vector Data" << std::endl;
 
     delete [] this->vectorData;
@@ -98,17 +108,19 @@ void Vector::emptyVectorData() {
     this->count = 0;
 }
 
-void Vector::nullifyVectorData() {
+template <typename T>
+void Vector<T>::nullifyVectorData() {
     std::cout << "Nullifying Vector Data" << std::endl;
 
     this->vectorData = nullptr;
     this->count = 0;
 }
 
-void Vector::Print() const {
+template <typename T>
+void Vector<T>::Print() const {
     std::cout << "Print Vector {";
     for (int i=0; i < this->count; i++) {
-        std::cout << unsigned(this->vectorData[i]);
+        std::cout << this->vectorData[i];
         if (i != (this->count - 1)) {
             std::cout << ",";
         }
@@ -116,6 +128,7 @@ void Vector::Print() const {
     std::cout << "}" << std::endl;
 }
 
-void Vector::PrintSize() const {
+template <typename T>
+void Vector<T>::PrintSize() const {
     std::cout << "Size of vector: " << this->count << std::endl;
 }
