@@ -12,6 +12,7 @@ add_executable(use_vector use_vector.cc)
 add_executable(intentional_leak intentional_leak.cc)
 add_executable(opengl_window opengl_window.cc)
 add_executable(structured_bindings structured_bindings.cc)
+add_executable(custom_timer custom_timer.cc)
 
 target_link_libraries(opengl_window glfw)
 target_link_libraries(opengl_window OpenGL::GL)
