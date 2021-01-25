@@ -11,5 +11,6 @@ add_executable(intentional_leak intentional_leak.cc)
 add_executable(structured_bindings structured_bindings.cc)
 add_executable(custom_timer custom_timer.cc)
 add_executable(stdthreads stdthreads.cc)
+add_executable(use_istream use_istream.cc)
 
 target_link_libraries(stdthreads PRIVATE Threads::Threads)
