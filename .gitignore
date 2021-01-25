@@ -15,6 +15,7 @@
 !README.md
 !dockerfiles/*.Dockerfile
 !docs/*.md
+!LICENSE
 !requirements/*.txt
 !scripts/*.py
 !scripts/*.sh
