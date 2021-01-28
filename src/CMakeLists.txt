@@ -12,5 +12,6 @@ add_executable(structured_bindings structured_bindings.cc)
 add_executable(custom_timer custom_timer.cc)
 add_executable(stdthreads stdthreads.cc)
 add_executable(use_istream use_istream.cc)
+add_executable(use_memset use_memset.cc)
 
 target_link_libraries(stdthreads PRIVATE Threads::Threads)
