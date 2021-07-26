@@ -9,17 +9,17 @@
 *
 
 # But not these files...
-!.env
-!.gitignore
-!CMakeLists.txt
-!docker-compose.yml
-!README.md
-!dockerfiles/*.Dockerfile
-!docs/*.md
-!LICENSE
-!requirements/*.txt
-!scripts/*.py
-!scripts/*.sh
+!./.env
+!./.gitignore
+!./CMakeLists.txt
+!./docker-compose.yml
+!./README.md
+!./dockerfiles/*.Dockerfile
+!./docs/*.md
+!./LICENSE
+!./requirements/*.txt
+!./scripts/*.py
+!./scripts/*.sh
 
 #C++
 !include/*/*.h
@@ -28,6 +28,9 @@
 !src/*.cc
 !src/*/*.h
 !src/*/*.cc
+!src/CMakeLists.txt
+!tests/*.cc
+!tests/CMakeLists.txt
 
 # ...even if they are in subdirectories
 !*/
