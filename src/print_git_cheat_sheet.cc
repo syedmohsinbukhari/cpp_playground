@@ -15,8 +15,8 @@ std::map<std::string, std::string> getCommands() {
             "Delete a branch from remote origin"
         },
         {
-            "git push origin --delete <remote-branch-name>",
-            "Delete a branch from remote origin"
+            "git push -u origin <branch-name>",
+            "Push current branch to remote origin with the given branch name"
         },
     };
 }
